@@ -6,5 +6,4 @@ RUN mkdir /unified
 RUN tar xpf scylla-unified-package.tar.gz -C /unified
 RUN cd /unified && ./install.sh --supervisor --supervisor-log-to-stdout || true
 RUN scylla_dev_mode_setup --developer-mode 1
-RUN  sed -i -e "s#--log-to-stdout 0#--log-to-stdout 1#g" /etc/sysconfig/scylla-server
 ENTRYPOINT ["supervisord", "-n"]
